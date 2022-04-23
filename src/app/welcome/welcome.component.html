@@ -1,0 +1,19 @@
+<div class="contianer bg-light py-5">
+    <h1 class="display-5 fw-bold"> Welcome</h1>
+    <p class="col-md-8 fs-4">This test will contains total 10 questions. Each Question holds 1 points</p>
+    <h4>Notes:</h4>
+    <ol>
+        <li>Duration of the test will be <strong> 60 sec</strong> only </li>
+        <li>Correct question gives you 1 point</li>
+        <li>InCorrect question gives you -1 point</li>
+        <li>Answer all the question don't leave out any</li>
+        <li>Refreshing the page will reset the question </li>
+        <li>Once you have completed the test. You will get Your score on the spot</li>
+    </ol>
+    <h1 class="text-center " >All the best!</h1>
+    <div class="name col-md-4 my-3">
+        <label for="">Enter Your Name</label>
+        <input  #name types="text" class="form-control">
+    </div>
+    <button class="btn btn-primary btn-lg" routerLink="/question" (click)="starttest()">Start the test</button>
+</div>

@@ -1,0 +1,78 @@
+<div class="container mt-5">
+    <div  class="card">
+        <div class="d-flex justify-content-between p-12">
+
+            <div class="image">
+                <img src="https://img.icons8.com/color/96/000000/angularjs.png" alt="logo" width="90" >
+            </div>
+            <div class="test-header">
+                <h4 style="font-style: oblique;">Online Test Assessment</h4>
+                <span style="font-style:italic" >Welcome {{name}}</span>
+            </div>
+
+        </div>
+       
+        <ng-container *ngIf="!isTestCompleted">
+            <div class="d-flex justify-content-around py-3">
+                <div class="'score">
+                   <h5>{{points}} points</h5>
+                </div>
+                <div class="question-remain">
+                     <span style="font-style: italic;"> Question  {{currentQuestion+1}} of {{questionList.length}}</span>
+                </div>
+                <div class="times">
+                   <h5>{{counter}}sec</h5> 
+                 </div>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width' : progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="question">
+                 <div   class="card">
+                     <h3>{{questionList[currentQuestion]?.questionText}}</h3>
+                 </div>
+              </div>
+              <div class="options">
+                  <ol *ngFor = "let option of questionList[currentQuestion]?.options" >
+                      <li (click)="answer(currentQuestion+1,option)" >
+                          <div class="card">
+                           <h4>{{option.text}}</h4>
+                           
+                          </div>
+                      </li>
+                      
+                     </ol>
+              </div>
+              <div class="d-flex justify-content-between">
+                  <button [disabled]="currentQuestion===0" class="btn" (click)="previousQuestion()"><i class="fa  text-primary fa-chevron-left fa-2x" aria-hidden="true"></i>
+                  </button>
+                  <!--<button class="btn"  ><i class="fa  text-primary fa-refresh fa-2x" aria-hidden="true"></i></button> -->
+                  <button [disabled]="currentQuestion === questionList.length - 1" class="btn" (click)=" nextQuestion()">
+                      <i class="fa  text-primary fa-chevron-right fa-2x" aria-hidden="true"></i> 
+                  </button>
+              </div>
+        </ng-container>
+        <ng-container *ngIf="isTestCompleted">
+            <div class="row-d-flex justify-content-between">
+                <!--<img style="width:50%" class="img-fluid col-sm-12 mx-auto" src="https://icons-library.com/images/celebration-icon-png/celebration-icon-png-7.jpg" alt="image"> -->
+                <div class="result text-center col-md-14 col-sm-28 bg-info" >
+                    <h3 style="font-style:italic"><strong>Congratulations !!</strong>  {{name}} <br> </h3>
+                    <h4 style="font-style:oblique"> You Have completed the Test.Thank You for your Participation! </h4>
+                    
+                </div>
+                <div class="result text-center col-md-10 col-sm-20 width:50%">
+                    <p><strong>Total Question Attempted :{{questionList.length}}</strong> </p>
+                    <p><strong>Total Correct Answered : {{correctAnswer}} </strong> </p> 
+                    <p><strong>Total Wrong Answered : {{inCorrectAnswer}}</strong></p>
+                    <p><strong>Your Score : {{points}} points </strong> </p> 
+                </div>
+            </div>
+        </ng-container>
+       
+
+      
+           
+       
+    </div>
+    
+</div>
